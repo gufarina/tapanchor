@@ -30,11 +30,21 @@ TapAnchor targets Android 15 (API 35) and is built with Java 17.
 
 ## Install
 
-1. Download `TapAnchor-2.6.apk` from the Releases page.
+1. Download [`TapAnchor-2.6.apk`](https://github.com/gufarina/tapanchor/releases/download/v2.6/TapAnchor-2.6.apk) from the Releases page.
 2. Allow installs from unknown sources for your browser or file manager.
 3. Install the APK.
 4. Install Shizuku and start it. Shizuku explains the wireless debugging or ADB steps in its own app.
 5. Open TapAnchor and grant it Shizuku access.
+
+### Verify the APK (optional)
+
+The release notes include the SHA-256. On Windows:
+
+```powershell
+Get-FileHash .\TapAnchor-2.6.apk -Algorithm SHA256
+```
+
+The hash must be `6587F1215AFC5B9F39ECFB82CFC96497C6142E2A4A6FA8B3C87A1CCBD30FBC67`.
 
 ## How to use
 
