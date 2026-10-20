@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- marcadores por cima do jogo (liberado pelo próprio app via Shizuku) -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!-- manter o TapAnchor ativo com o jogo aberto, com aviso na barra -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <queries>
+        <package android:name="moe.shizuku.privileged.api" />
+    </queries>
+
+    <application android:icon="@mipmap/ic_launcher" android:label="TapAnchor" android:theme="@android:style/Theme.DeviceDefault.NoActionBar">
+        <activity android:name=".ui.MainActivity" android:exported="true" android:configChanges="orientation|screenSize|screenLayout|keyboard|keyboardHidden|navigation">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <service android:name=".infra.AnchorService" android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Mantém os marcadores de toque sobre o jogo enquanto o controle está em uso" />
+        </service>
+        <provider android:name="rikka.shizuku.ShizukuProvider"
+            android:authorities="${applicationId}.shizuku"
+            android:multiprocess="false" android:enabled="true" android:exported="true"
+            android:permission="android.permission.INTERACT_ACROSS_USERS_FULL" />
+    </application>
+</manifest>
